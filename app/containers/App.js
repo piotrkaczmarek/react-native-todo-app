@@ -6,10 +6,11 @@ import { Actions } from 'react-native-router-flux'
 import { actionCreators } from '../redux/todoRedux'
 
 import Title from '../components/Title'
+import Footer from '../components/Footer'
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
 })
 
@@ -28,6 +29,8 @@ class App extends Component {
     return (
       <View style={styles.container}>
         <Title>ToDo App</Title>
+        <ScrollView></ScrollView>
+        <Footer>Remove completed items</Footer>
       </View>
     )
   }
