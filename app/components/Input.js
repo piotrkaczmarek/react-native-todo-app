@@ -19,9 +19,19 @@ export default class Input extends Component {
     this.setState({value});
   }
 
+  onSubmitEditing = () => {
+    const {onSubmit} = this.props;
+    const {value} = this.state;
+
+    if (!value) return;
+
+    onSubmit(value);
+    this.setState({value: ''});
+  }
+
   render() {
     const {value} = this.state;
-    const {placeholder} = this.props;
+    const {placeholder, onSubmitEditing} = this.props;
 
     return (
       <TextInput
@@ -29,6 +39,7 @@ export default class Input extends Component {
         value={value}
         placeholder={placeholder}
         onChangeText={this.onChangeText}
+        onSubmitEditing={this.onSubmitEditing}
       />
     )
   }
