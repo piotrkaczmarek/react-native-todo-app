@@ -5,6 +5,8 @@ import { Actions } from 'react-native-router-flux'
 
 import { actionCreators } from '../redux/todoRedux'
 
+import Title from '../components/Title'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -25,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-
+        <Title>ToDo App</Title>
       </View>
     )
   }
