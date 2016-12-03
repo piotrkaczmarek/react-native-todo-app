@@ -7,6 +7,7 @@ import { actionCreators } from '../redux/todoRedux'
 
 import Title from '../components/Title'
 import Footer from '../components/Footer'
+import Input from '../components/Input'
 
 const styles = StyleSheet.create({
   container: {
@@ -29,6 +30,7 @@ class App extends Component {
     return (
       <View style={styles.container}>
         <Title>ToDo App</Title>
+        <Input placeholder="Enter new task"/>
         <ScrollView></ScrollView>
         <Footer>Remove completed items</Footer>
       </View>
