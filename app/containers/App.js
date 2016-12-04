@@ -45,6 +45,11 @@ class App extends Component {
     dispatch(actionCreators.toggleItemCompleted(index));
   }
 
+  onRemoveCompleted = () => {
+    const {dispatch} = this.props;
+
+    dispatch(actionCreators.removeCompletedItems());
+  }
   render() {
     const {items} = this.props;
 
@@ -53,7 +58,7 @@ class App extends Component {
         <Title>ToDo App</Title>
         <Input placeholder="Enter new task" onSubmit={this.onAddItem}/>
         <List items={items} onToggleCheckbox={this.onCompleteItem} onPressRemove={this.onRemoveItem}/>
-        <Footer>Remove completed items</Footer>
+        <Footer onPress={this.onRemoveCompleted}>Remove completed items</Footer>
       </View>
     )
   }
