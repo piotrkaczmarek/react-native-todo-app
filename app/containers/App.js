@@ -33,6 +33,12 @@ class App extends Component {
     dispatch(actionCreators.addItem(text));
   }
 
+  onCompleteItem = (index) => {
+    const {dispatch} = this.props;
+
+    dispatch(actionCreators.toggleItemCompleted(index));
+  }
+
   render() {
     const {items} = this.props;
 
@@ -40,7 +46,7 @@ class App extends Component {
       <View style={styles.container}>
         <Title>ToDo App</Title>
         <Input placeholder="Enter new task" onSubmit={this.onAddItem}/>
-        <List items={items}/>
+        <List items={items} onToggleCheckbox={this.onCompleteItem}/>
         <Footer>Remove completed items</Footer>
       </View>
     )

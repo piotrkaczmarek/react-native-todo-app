@@ -7,16 +7,24 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: 'lightblue',
     padding: 5,
-    marginBottom: 5
+    marginBottom: 5,
+    justifyContent: 'space-between',
+    flex: 1,
+    flexDirection: 'row'
   }
 })
 
 export default class List extends Component {
   renderItem = (item, index) => {
+    const {onToggleCheckbox} = this.props;
+
     return (
-      <TouchableOpacity style={styles.item} key={index}>
-        <Text>{item}</Text>
-      </TouchableOpacity>
+      <View key={index} style={styles.item}>
+        <TouchableOpacity >
+          <Text>{item.title}</Text>
+        </TouchableOpacity>
+        <Checkbox isChecked={item.completed} onPress={() => onToggleCheckbox(index)} />
+      </View>
     )
   }
 
