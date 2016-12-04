@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 const styles = StyleSheet.create({
   box: {
     justifyContent: 'center',
+    margin: 5,
     borderWidth: 2,
     borderRadius: 12,
     height: 24,
