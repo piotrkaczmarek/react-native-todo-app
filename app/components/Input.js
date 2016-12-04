@@ -1,49 +1,43 @@
 import React, { Component, PropTypes } from 'react'
 import { TextInput, View, StyleSheet } from 'react-native'
-import { connect } from 'react-redux'
-import { Actions } from 'react-native-router-flux'
 
 const styles = StyleSheet.create({
   input: {
-    height: 50,
-    padding: 15,
-  },
+    height: 40,
+    backgroundColor: 'papayawhip',
+    borderStyle: 'solid',
+    borderWidth: 2
+  }
 })
 
 export default class Input extends Component {
-
-  static propTypes = {
-    onSubmit: PropTypes.func,
-    placeholder: PropTypes.string,
-  }
-
   state = {
-    text: '',
+    value: ''
   }
 
-  onChangeText = (text) => {
-    this.setState({text})
+  onChangeText = (value) => {
+    this.setState({value});
   }
 
   onSubmitEditing = () => {
-    const {onSubmit} = this.props
-    const {text} = this.state
+    const {onSubmit} = this.props;
+    const {value} = this.state;
 
-    if (!text) return
+    if (!value) return;
 
-    onSubmit(text)
-    this.setState({text: ''})
+    onSubmit(value);
+    this.setState({value: ''});
   }
 
   render() {
-    const {onSubmit, placeholder} = this.props
-    const {text} = this.state
+    const {value} = this.state;
+    const {placeholder, onSubmitEditing} = this.props;
 
     return (
       <TextInput
         style={styles.input}
+        value={value}
         placeholder={placeholder}
-        value={text}
         onChangeText={this.onChangeText}
         onSubmitEditing={this.onSubmitEditing}
       />

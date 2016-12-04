@@ -3,33 +3,32 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 const styles = StyleSheet.create({
   box: {
-    height: 20,
-    width: 20,
+    justifyContent: 'center',
+    margin: 5,
     borderWidth: 2,
-    borderColor: 'black',
+    borderRadius: 12,
+    height: 24,
+    width: 24
   },
-  inner: {
-    flex: 1,
-    margin: 2,
-    backgroundColor: 'rgba(0,0,0,0.8)',
+  unchecked: {
   },
+  checked: {
+    backgroundColor: 'black',
+    alignSelf: 'center',
+    borderRadius: 8,
+    height: 16,
+    width: 16
+  }
 })
 
 export default class Checkbox extends Component {
-
-  static propTypes = {
-    onToggle: PropTypes.func,
-    isChecked: PropTypes.bool,
-  }
-
   render() {
-    const {onToggle, isChecked} = this.props
+    const {onPress, isChecked} = this.props;
+    const checkboxStyle = isChecked ? styles.checked: styles.unchecked;
 
     return (
-      <TouchableOpacity onPress={onToggle}>
-        <View style={styles.box}>
-          { isChecked && <View style={styles.inner}/> }
-        </View>
+      <TouchableOpacity style={styles.box} onPress={onPress}>
+        <View style={checkboxStyle}/>
       </TouchableOpacity>
     )
   }

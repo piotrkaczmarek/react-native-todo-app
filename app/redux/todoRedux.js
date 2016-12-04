@@ -2,7 +2,7 @@ const types = {
   ADD_ITEM: 'ADD_ITEM',
   REMOVE_ITEM: 'REMOVE_ITEM',
   TOGGLE_ITEM_COMPLETED: 'TOGGLE_ITEM_COMPLETED',
-  REMOVE_COMPLETED: 'REMOVE_COMPLETED',
+  REMOVE_COMPLETED_ITEMS: 'REMOVE_COMPLETED_ITEMS'
 }
 
 export const actionCreators = {
@@ -15,9 +15,9 @@ export const actionCreators = {
   toggleItemCompleted: (index) => {
     return {type: types.TOGGLE_ITEM_COMPLETED, payload: index}
   },
-  removeCompleted: (item) => {
-    return {type: types.REMOVE_COMPLETED, payload: item}
-  },
+  removeCompletedItems: () => {
+    return {type: types.REMOVE_COMPLETED_ITEMS}
+  }
 }
 
 const initialState = {
@@ -32,27 +32,27 @@ export const reducer = (state = initialState, action) => {
     case types.ADD_ITEM: {
       return {
         ...state,
-        items: [{label: payload, completed: false}, ...items],
+        items: [{title: payload, completed: false}, ...items]
       }
     }
     case types.REMOVE_ITEM: {
       return {
         ...state,
-        items: items.filter((item, i) => i !== payload),
+        items: items.filter((item, index) => index != payload)
       }
     }
     case types.TOGGLE_ITEM_COMPLETED: {
       return {
         ...state,
-        items: items.map((item, i) => {
-          if (i === payload) {
-            return {label: item.label, completed: !item.completed}
+        items: items.map((item, index) => {
+          if (index == payload) {
+            return {title: item.title, completed: !item.completed}
           }
-          return item
-        }),
+          return item;
+        })
       }
     }
-    case types.REMOVE_COMPLETED: {
+    case types.REMOVE_COMPLETED_ITEMS: {
       return {
         ...state,
         items: items.filter((item) => !item.completed)

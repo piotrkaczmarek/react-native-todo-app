@@ -2,24 +2,24 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-  header: {
-    backgroundColor: 'skyblue',
-    padding: 15,
+  view: {
+    backgroundColor: 'lightgreen',
+    padding: 15
   },
-  title: {
+  text: {
     textAlign: 'center',
     color: 'white',
-  },
+    fontWeight: 'bold'
+  }
 })
 
 export default class Title extends Component {
-
   render() {
-    const {children} = this.props
+    const {children} = this.props;
 
     return (
-      <View style={styles.header}>
-        <Text style={styles.title}>{children}</Text>
+      <View style={styles.view}>
+        <Text style={styles.text}>{children}</Text>
       </View>
     )
   }
